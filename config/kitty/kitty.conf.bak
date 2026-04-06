@@ -1,0 +1,56 @@
+enable_audio_bell no
+
+# Cursor
+cursor                #00ffff
+cursor_text_color     background
+
+# URLs
+url_color             #00ffff
+
+# Visual bell
+visual_bell_color     #ff1493
+bell_border_color     #ff1493
+
+# Borders
+active_border_color   #8a2be2
+inactive_border_color #665c54
+
+# Background / Foreground
+foreground            #ebdbb2
+background            #1a1a1a
+background_opacity    0.85
+
+selection_foreground  #282828
+selection_background  #ff00ff
+
+# Tabs
+active_tab_foreground   #fbf1c7
+active_tab_background   #8a2be2
+inactive_tab_foreground #a89984
+inactive_tab_background #3c3836
+
+# Colors
+color0  #665c54
+color1  #ff1493
+color2  #00ff00
+color3  #d79921
+color4  #00ffff
+color5  #ff00ff
+color6  #689d6a
+color7  #a89984
+color8  #7c6f64
+color9  #fb4934
+color10 #b8bb26
+color11 #fabd2f
+color12 #83a598
+color13 #d3869b
+color14 #8ec07c
+color15 #bdae93
+
+# Font
+font_family      "JetBrains Mono Nerd Font"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size 12.0
+enable_window_decorations true

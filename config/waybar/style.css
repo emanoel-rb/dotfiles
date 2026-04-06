@@ -1,0 +1,100 @@
+/* ==========================================================
+ * Waybar CSS Style - Cyberpunk Neon Theme
+ * ----------------------------------------------------------
+ * - Configura fontes, cores e espaçamento dos módulos
+ * - Estilo consistente com tema cyberpunk
+ * - Barra full width transparente
+ * - Destaque de workspaces, relógio, clima, Spotify e tray
+ * ========================================================== */
+
+/* ==========================================================
+ * Global
+ * ========================================================== */
+* {
+  font-family: JetBrainsMono Nerd Font;  /* Fonte principal para ícones e texto */
+  font-size: 12px;                       /* Tamanho de fonte padrão */
+  border: none;                          /* Remove bordas padrão */
+}
+
+/* ==========================================================
+ * Barra principal
+ * ========================================================== */
+window#waybar {
+  background: rgba(10, 10, 20, 0.9);     /* Barra full width, fundo semi-transparente escuro */
+}
+
+/* ==========================================================
+ * Workspaces
+ * ========================================================== */
+#workspaces button {
+  padding: 4px 10px;                     /* Espaçamento interno dos botões */
+  margin: 4px;                            /* Margem entre botões */
+  border-radius: 8px;                     /* Bordas arredondadas */
+  color: #00ccff;                         /* Cor padrão do texto */
+  transition: 0.2s;                       /* Suaviza mudanças de cor e hover */
+}
+
+#workspaces button.active {
+  background: #00ccff;                    /* Fundo do workspace ativo */
+  color: #0a0a14;                         /* Cor do texto do workspace ativo */
+  box-shadow: 0 0 6px #00ccff;            /* Brilho neon no workspace ativo */
+}
+
+/* ==========================================================
+ * Clock
+ * ========================================================== */
+#clock {
+  color: #00ccff;                         /* Cor do texto do relógio */
+  padding: 6px 14px;                      /* Espaçamento interno */
+  background: rgba(0, 204, 255, 0.12);    /* Fundo levemente transparente */
+  border-radius: 10px;                     /* Bordas arredondadas */
+}
+
+/* ==========================================================
+ * Weather
+ * ========================================================== */
+#custom-weather {
+  color: #89dceb;                         /* Cor do texto do clima */
+  padding: 6px 10px;                       /* Espaçamento interno */
+}
+
+/* ==========================================================
+ * Spotify
+ * ========================================================== */
+#custom-spotify {
+  color: #1db954;                         /* Cor do texto do Spotify */
+  padding: 6px 10px;                       /* Espaçamento interno */
+}
+
+/* ==========================================================
+ * Network / Bluetooth
+ * ========================================================== */
+#network,
+#bluetooth {
+  color: #00ccff;                         /* Cor do texto */
+  padding: 6px 10px;                       /* Espaçamento interno */
+}
+
+/* ==========================================================
+ * Tray
+ * ========================================================== */
+#tray {
+  padding: 6px 8px;                        /* Espaçamento interno da bandeja */
+}
+
+/* ==========================================================
+ * System Group (balão único)
+ * ========================================================== */
+#group-system {
+  background: rgba(0, 204, 255, 0.12);
+  border-radius: 12px;
+  padding: 0 8px;
+}
+
+/* Remove fundo individual */
+#backlight,
+#pulseaudio,
+#battery {
+  background: transparent;
+  padding: 6px 8px;
+}

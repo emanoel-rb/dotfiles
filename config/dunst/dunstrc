@@ -1,0 +1,73 @@
+###############################################################################
+# Dunst Configuration - Cyberpunk Neon
+# -----------------------------------------------------------------------------
+# - Integração visual com Waybar e tema neon azul
+# - Layout moderno com cantos arredondados
+# - Fonte Nerd Font para compatibilidade com ícones
+# - Transparência opcional
+# - Configuração de urgência por tipo de notificação
+###############################################################################
+
+[global]
+    # Fonte utilizada nas notificações
+    font = JetBrainsMono Nerd Font 10
+
+    # Layout geral da notificação
+    width = 320                     # largura da notificação
+    offset = 20x20                  # distância da borda da tela
+    origin = top-right              # canto da tela onde aparecerá
+
+    # Visual cyberpunk
+    background = "#0a0a14"         # cor de fundo escura
+    foreground = "#cdd6f4"         # cor do texto
+    frame_color = "#00ccff"         # cor da borda e destaque
+
+    # Bordas e arredondamento
+    corner_radius = 12              # cantos da notificação
+    icon_corner_radius = 12         # cantos dos ícones
+    frame_width = 2                 # espessura da borda
+
+    # Espaçamento interno e entre elementos
+    padding = 12
+    horizontal_padding = 12
+    gap_size = 8
+
+    # Separadores dentro da notificação
+    separator_color = frame
+    separator_height = 2
+
+    # Formatação de texto
+    format = "<b>%s</b>\n<span foreground='#89dceb'>%b</span>"  # título e corpo
+    alignment = left               # alinhamento do texto
+    markup = full                  # permite HTML/markup completo
+
+    # Ícones
+    icon_position = left
+    min_icon_size = 64
+    max_icon_size = 64
+
+    # Comportamento do texto
+    word_wrap = true               # quebra de linha automática
+    ellipsize = middle             # cortar texto no meio se for grande
+    ignore_newline = no            # respeitar quebras de linha
+
+    # Histórico de notificações
+    history_length = 20
+
+    # Transparência (0 = opaco, 1 = transparente)
+    transparency = 0
+
+###############################################################################
+# Configuração de tempo de exibição por nível de urgência
+###############################################################################
+[urgency_low]
+    timeout = 3                    # notificação desaparece em 3 segundos
+
+[urgency_normal]
+    timeout = 6                    # notificação desaparece em 6 segundos
+
+[urgency_critical]
+    background = "#00ccff"         # fundo azul neon
+    foreground = "#0a0a14"         # texto escuro
+    frame_color = "#00ccff"        # borda neon
+    timeout = 0                     # não desaparece automaticamente

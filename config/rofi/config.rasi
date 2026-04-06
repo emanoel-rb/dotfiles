@@ -1,0 +1,162 @@
+/*
+* ==========================================================
+* Rofi Configuration - Cyberpunk Neon / Waybar Integration
+* ----------------------------------------------------------
+* - Mantém layout original
+* - Ajusta cores para combinar com Waybar (neon azul + dark)
+* - Transparência real para janelas
+* - Arredondamento suave e estilo cyberpunk
+* - Barra de entrada destacada e lista de resultados limpa
+* ==========================================================
+*/
+
+/*==========================================================
+* CONFIGURAÇÃO GLOBAL
+*----------------------------------------------------------*/
+configuration {
+    modes: "drun";                          /* modo padrão do Rofi */
+    font: "JetBrainsMono Nerd Font 12";      /* fonte nerd para ícones */
+    drun-display-format: "{name}";           /* formato de exibição de aplicativos */
+}
+
+/*==========================================================
+* GLOBAL STYLES
+*----------------------------------------------------------*/
+* {
+    /* Paleta de cores alinhada com Waybar */
+    color0: #0a0a14;        /* fundo escuro principal */
+    color2: #00ccff;        /* neon azul */
+    color3: #1e1e2e;        /* fundo secundário */
+    color4: #00ccff;        /* cor de destaque */
+    color5: #cdd6f4;        /* texto claro */
+    color8: #151520;        /* fundo alternativo */
+    color9: #10101a;        /* fundo barra de entrada */
+
+    fg-highlight: @color4;   /* cor do texto destacado */
+
+    bg-entry: @color9;        /* fundo da entrada de texto */
+    fg-entry: @color4;        /* texto da entrada */
+    fg-placeholder: #cdd6f466; /* placeholder translúcido */
+
+    bg-listview: @color0;     /* fundo da lista de resultados */
+    fg-element: @color5;      /* cor do texto dos elementos */
+
+    bg-element-selected: @color3;         /* fundo do item selecionado */
+    fg-element-selected: @color2;         /* texto do item selecionado */
+    border-color-element-selected: @color4; /* borda do item selecionado */
+
+    bg-inputbar: @color0;     /* fundo da barra de entrada */
+
+    border-color: @color4;    /* cor padrão da borda */
+
+    br: 12px;                 /* arredondamento dos elementos */
+
+    border-size-window: 2px;             /* espessura da borda da janela */
+    border-size-element-selected: 2px;   /* espessura da borda do elemento selecionado */
+
+    spacing: 4;                /* espaçamento interno */
+}
+
+/*==========================================================
+* MAIN WINDOW
+*----------------------------------------------------------*/
+window {
+    transparency: "real";                        /* ativa transparência real */
+    background-color: rgba(10, 10, 20, 0.85);   /* fundo levemente translúcido */
+
+    padding: 0;
+    children: [mainbox];
+
+    border: @border-size-window;
+    border-color: @border-color;
+    border-radius: 16px;
+
+    width: 20%;                                  /* largura da janela */
+}
+
+/*==========================================================
+* MAIN BOX
+*----------------------------------------------------------*/
+mainbox {
+    children: [inputbar, listview];             /* organiza a barra de entrada e lista */
+    orientation: vertical;                       /* empilha verticalmente */
+}
+
+/*==========================================================
+* INPUT BAR
+*----------------------------------------------------------*/
+inputbar {
+    children: [entry];                           /* apenas a entrada de texto */
+    background-color: transparent;               /* transparente */
+}
+
+entry {
+    color: @fg-entry;                            /* cor do texto */
+    placeholder-color: @fg-placeholder;         /* cor do placeholder */
+    background-color: @bg-entry;                /* fundo da entrada */
+    placeholder: "Search...";                   /* texto de placeholder */
+    text-transform: bold;                        /* texto em negrito */
+    border-radius: @br;                          /* cantos arredondados */
+    padding: 12px;
+    margin: 10px;
+    vertical-align: 0.5;
+    border: 1px;
+    border-color: @border-color;
+}
+
+/*==========================================================
+* LIST VIEW
+*----------------------------------------------------------*/
+listview {
+    scrollbar: false;                            /* remove scrollbar */
+    border: 0;
+    lines: 8;                                    /* número de linhas visíveis */
+    background-color: @bg-listview;             /* fundo da lista */
+    padding: 10px;
+}
+
+/*==========================================================
+* ELEMENTS
+*----------------------------------------------------------*/
+element {
+    children: [element-icon, element-text];
+    spacing: 10px;
+    border-radius: @br;                          /* cantos arredondados */
+}
+
+element-icon {
+    vertical-align: 0.5;
+    margin: 0 0 0 10px;                         /* margem lateral esquerda */
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-transform: bold;
+    border-radius: @br;
+    color: @fg-element;                         /* cor padrão do texto */
+    highlight: @fg-highlight;                   /* cor do destaque */
+    padding: 5px;
+    margin: 10px 10px 10px 0;
+}
+
+/*==========================================================
+* ELEMENT SELECTION
+*----------------------------------------------------------*/
+element selected.normal {
+    background-color: @bg-element-selected;      /* fundo do item selecionado */
+    border: @border-size-element-selected;       /* borda do item selecionado */
+    border-color: @border-color-element-selected;
+}
+
+element-text selected {
+    color: @fg-element-selected;                 /* cor do texto selecionado */
+    text-transform: bold;
+}
+
+/*==========================================================
+* ELEMENT TRANSPARENCY
+*----------------------------------------------------------*/
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;               /* mantém elementos não selecionados transparentes */
+}

@@ -1,0 +1,125 @@
+/*** ==========================================================
+ *** Waybar Configuration
+ *** ----------------------------------------------------------
+ *** - Define layout, posição e estilo da barra
+ *** - Configura módulos à esquerda, centro e direita
+ *** - Permite integração com Hyprland, relógio, Spotify e weather.py
+ *** - Estilo consistente com spacing e tamanhos de ícones
+ *** ========================================================== ***/
+{
+  /*** ========================================================
+   *** Barra principal
+   *** ======================================================== ***/
+  "layer": "top",                         /*** Layer da barra (topo da tela) ***/
+  "position": "top",                       /*** Posição da barra ***/
+  "width": "100%",                         /*** Largura total da barra ***/
+  "spacing": 6,                            /*** Espaçamento interno entre módulos ***/
+  "reload_style_on_change": true,          /*** Recarrega CSS quando alterações são feitas ***/
+
+  /*** ========================================================
+   *** Módulos à esquerda
+   *** ======================================================== ***/
+  "modules-left": [
+    "hyprland/workspaces",                /*** Mostra os workspaces do Hyprland ***/
+    "custom/spotify"                     /*** Módulo Spotify ***/
+
+  ],
+
+  /*** ========================================================
+   *** Módulos no centro
+   *** ======================================================== ***/
+  "modules-center": [
+    "clock",                               /*** Relógio ***/
+    "custom/weather"                       /*** Módulo de clima customizado ***/
+  ],
+
+  /*** ========================================================
+   *** Módulos à direita
+   *** ======================================================== ***/
+"modules-right": [
+    "group/system"
+],
+
+"group/system": {
+    "orientation": "horizontal",
+    "modules": [
+        "backlight",
+        "pulseaudio",
+        "battery"
+    ]
+},
+
+  /*** ========================================================
+   *** Módulo Spotify (custom)
+   *** ======================================================== ***/
+  "custom/spotify": {
+    "format": "{}",                         /*** Formato de saída do script ***/
+    "exec": "/usr/bin/python3 ~/.config/waybar/assets/mediaplayer.py --player spotify",
+                                            /*** Script Python que retorna o status do Spotify ***/
+    "return-type": "json",                 /*** Tipo de retorno esperado ***/
+    "on-click": "playerctl -p spotify play-pause",   /*** Clique: play/pause ***/
+    "on-scroll-up": "playerctl -p spotify next",    /*** Scroll up: próxima música ***/
+    "on-scroll-down": "playerctl -p spotify previous" /*** Scroll down: música anterior ***/
+  },
+
+  /*** ========================================================
+   *** Tray / bandeja
+   *** ======================================================== ***/
+  "tray": {
+    "icon-size": 18,                       /*** Tamanho dos ícones ***/
+    "spacing": 8                            /*** Espaçamento entre ícones ***/
+  },
+
+  /*** ========================================================
+   *** Relógio
+   *** ======================================================== ***/
+  "clock": {
+    "format": "{:%a %d %b %H:%M}",         /*** Formato do relógio ***/
+    "tooltip-format": "<tt>{calendar}</tt>", /*** Tooltip com calendário ***/
+    "calendar": {
+      "mode": "year",                       /*** Modo de exibição do calendário ***/
+      "mode-mon-col": 3,                     /*** Colunas de meses ***/
+      "format": {
+        "months": "<span color='#00ccff'><b>{}</b></span>",    /*** Formato dos meses ***/
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",      /*** Formato dos dias ***/
+        "weekdays": "<span color='#89dceb'><b>{}</b></span>",  /*** Formato dos dias da semana ***/
+        "today": "<span color='#00ccff'><b><u>{}</u></b></span>" /*** Destaque do dia atual ***/
+      }
+    }
+  },
+
+  /*** ========================================================
+   *** Módulo Weather (custom)
+   *** ======================================================== ***/
+  "custom/weather": {
+    "format": "{}",                         /*** Formato de saída do script weather.py ***/
+    "exec": "~/.config/waybar/assets/.venv/bin/python ~/.config/waybar/assets/weather.py",
+                                            /*** Caminho do script Python de clima ***/
+    "interval": 300,                        /*** Intervalo de atualização (em segundos) ***/
+    "return-type": "json"                   /*** Tipo de retorno esperado ***/
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-icons": ["", "", "", "", ""],
+    "interval": 30
+},
+
+"pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁 MUTED",
+    "format-icons": {
+        "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol"
+},
+
+"backlight": {
+    "device": "intel_backlight",
+    "format": "󰃞 {percent}%",
+    "scroll-step": 5
+}
+
+}
